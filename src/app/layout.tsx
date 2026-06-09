@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FormModalProvider } from "../components/ui/FormModalContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -55,7 +56,9 @@ export default function RootLayout({
       className="h-full antialiased scroll-smooth"
     >
       <body className="min-h-full flex flex-col bg-[#F8F9FD] text-[#111111] font-sans selection:bg-neutral-200 selection:text-neutral-900">
-        {children}
+        <FormModalProvider>
+          {children}
+        </FormModalProvider>
       </body>
     </html>
   );

@@ -5,10 +5,12 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import Button from "../ui/Button";
+import { useFormModal } from "../ui/FormModalContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openFormModal } = useFormModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,15 +72,13 @@ export default function Navbar() {
 
           {/* Desktop Action Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="https://tally.so/r/gDz4Rd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-neutral-600 hover:text-neutral-950 transition-colors font-medium"
+            <button
+              onClick={openFormModal}
+              className="text-sm text-neutral-600 hover:text-neutral-950 transition-colors font-medium cursor-pointer bg-transparent border-0"
             >
               Participate
-            </Link>
-            <Button href="https://tally.so/r/gDz4Rd" variant="primary">
+            </button>
+            <Button onClick={openFormModal} variant="primary">
               Start Journey <ArrowUpRight className="w-4 h-4 ml-0.5" />
             </Button>
           </div>
@@ -115,22 +115,24 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                href="https://tally.so/r/gDz4Rd"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="text-lg text-neutral-800 font-semibold hover:text-neutral-950 transition-colors py-2 flex items-center justify-between"
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  openFormModal();
+                }}
+                className="text-lg text-neutral-800 font-semibold hover:text-neutral-950 transition-colors py-2 flex items-center justify-between text-left w-full cursor-pointer bg-transparent border-0"
               >
                 <span>Participate</span>
                 <ArrowUpRight className="w-5 h-5 text-neutral-400" />
-              </Link>
+              </button>
             </div>
 
             <div className="pb-8 flex flex-col gap-4">
               <Button
-                href="https://tally.so/r/gDz4Rd"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  openFormModal();
+                }}
                 variant="primary"
                 className="w-full text-center"
               >

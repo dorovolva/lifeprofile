@@ -7,6 +7,7 @@ import Link from "next/link";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Button from "../components/ui/Button";
+import { useFormModal } from "../components/ui/FormModalContext";
 import GradientMesh from "../components/ui/GradientMesh";
 import DotField from "../components/ui/DotField";
 import GlareHover from "../components/ui/GlareHover";
@@ -30,6 +31,7 @@ function ScrollReveal({ children, delay = 0, className = "" }: { children: React
 }
 
 export default function Home() {
+  const { openFormModal } = useFormModal();
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -95,7 +97,7 @@ export default function Home() {
               transitionDuration={1200}
               className="w-full sm:w-auto shadow-[0_10px_30px_rgba(99,102,241,0.2)] hover:shadow-[0_15px_35px_rgba(99,102,241,0.3)] hover:-translate-y-0.5 transition-all duration-300"
             >
-              <Button href="https://tally.so/r/gDz4Rd" variant="primary" className="w-full sm:w-auto px-8 py-4 text-base !shadow-none border-0 hover:bg-neutral-800">
+              <Button onClick={openFormModal} variant="primary" className="w-full sm:w-auto px-8 py-4 text-base !shadow-none border-0 hover:bg-neutral-800">
                 Participate In Research <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </GlareHover>
@@ -420,7 +422,7 @@ export default function Home() {
             transitionDuration={1000}
             className="shadow-[0_10px_35px_rgba(99,102,241,0.15)] hover:shadow-[0_15px_40px_rgba(99,102,241,0.25)] transition-all duration-300"
           >
-            <Button href="https://tally.so/r/gDz4Rd" variant="secondary" className="px-8 py-3.5 group !shadow-none border-0 hover:bg-neutral-50">
+            <Button onClick={openFormModal} variant="secondary" className="px-8 py-3.5 group !shadow-none border-0 hover:bg-neutral-50">
               Start Research Journey <ArrowUpRight className="w-4.5 h-4.5 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
           </GlareHover>

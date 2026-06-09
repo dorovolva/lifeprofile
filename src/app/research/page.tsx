@@ -7,8 +7,10 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Button from "../../components/ui/Button";
 import GradientMesh from "../../components/ui/GradientMesh";
+import { useFormModal } from "../../components/ui/FormModalContext";
 
 export default function ResearchPage() {
+  const { openFormModal } = useFormModal();
   const animations = {
     fadeUp: {
       initial: { opacity: 0, y: 20 },
@@ -144,7 +146,7 @@ export default function ResearchPage() {
           <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-4">
             Ready to Begin
           </span>
-          <Button href="https://tally.so/r/gDz4Rd" variant="primary" className="px-10 py-4 text-base font-medium shadow-md">
+          <Button onClick={openFormModal} variant="primary" className="px-10 py-4 text-base font-medium shadow-md">
             Begin Life Discovery Journey <ArrowRight className="w-5 h-5 ml-2" />
           </Button></div>
       </main>

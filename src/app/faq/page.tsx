@@ -19,6 +19,7 @@ import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 import Button from "../../components/ui/Button";
 import GradientMesh from "../../components/ui/GradientMesh";
+import { useFormModal } from "../../components/ui/FormModalContext";
 
 interface FAQItem {
   id: string;
@@ -30,6 +31,7 @@ interface FAQItem {
 }
 
 export default function FAQPage() {
+  const { openFormModal } = useFormModal();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<"all" | "about" | "participation" | "future">("all");
   const [openId, setOpenId] = useState<string | null>("hde-definition");
@@ -517,7 +519,7 @@ export default function FAQPage() {
           <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-4">
             Join the Initiative
           </span>
-          <Button href="https://tally.so/r/gDz4Rd" variant="primary" className="px-10 py-4 text-base font-semibold shadow-md group">
+          <Button onClick={openFormModal} variant="primary" className="px-10 py-4 text-base font-semibold shadow-md group">
             Begin Life Discovery Journey 
             <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
           </Button>
