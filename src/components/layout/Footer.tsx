@@ -41,6 +41,12 @@ export default function Footer() {
               Research
             </Link>
             <Link
+              href="/faq"
+              className="text-sm text-neutral-500 hover:text-neutral-950 transition-colors"
+            >
+              FAQ
+            </Link>
+            <Link
               href="/#framework"
               className="text-sm text-neutral-500 hover:text-neutral-950 transition-colors"
             >
